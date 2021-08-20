@@ -1,6 +1,5 @@
 <?php
-// session_start();
-// $user=$_SESSION['username'];
+require('../vendor/autoload.php');
 ?>
 <!DOCTYPE html>
 <html>

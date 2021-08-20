@@ -1,0 +1,17 @@
+{
+    "name": "joelelibercordero/map",
+    "description": "OSP Map",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Joelelibercordero\\Map\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "joelcordero",
+            "email": "jcordero1183@gmail.com"
+        }
+    ],
+    "require": {}
+}

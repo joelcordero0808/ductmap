@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>POC</title>
+    <link href="login/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="login/js/bootstrap.min.js"></script>
+    <script src="login/js/jquery.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		$("#alert").hide();
+    	});
+    </script>
+    <script type="text/javascript">
+        $(function(){
+         $('#sendlogin').click(function() {
+         	login();
+         });
+        });
+    </script>
+    <script type="text/javascript">
+    	 function login() {
+         var strusername = $('#username').val();
+         var strpassword = $('#password').val();
+
+         if (strusername=="" && strpassword=="") {
+            $("#alert").show();
+         } else {
+            
+             $.ajax({
+                 url: "bind.php",
+                 type:"POST",
+                 data:{username : strusername, password : strpassword},
+                 cache: false,
+                 success: function(data){
+                 if (data=="Login") { window.location.href = 'home.php';}
+                 },error: function(xhr, status, error) {
+                    $("#alert").show();
+                 } 
+
+            });
+         }
+        
+
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" id="loginform" autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="username" placeholder="username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password" placeholder="password">
+                            </div>
+                            <button type="button" id="sendlogin" class="btn btn-primary">login</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="alert" class="alert alert-danger" role="alert">Invalid username/password!</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
